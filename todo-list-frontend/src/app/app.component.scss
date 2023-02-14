@@ -19,3 +19,48 @@ input[type=text] {
   color: rgba(128,128,128,1);
   margin-top: 50px;
 }
+
+.confirmation-modal{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+
+  &.show{
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &.hide{
+      opacity:0;
+      display: none;
+  }
+}
+
+.todo-item{
+  cursor: pointer;
+  &:hover{
+    background: rgba(128,128,128,0.1);
+  }
+}
+
+.response{
+  margin-top: 30px;
+  font-weight: 900;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+
+  &.error{
+    color: red;
+  }
+
+  &.success{
+    color: green;
+  }
+}

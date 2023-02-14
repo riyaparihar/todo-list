@@ -1,0 +1,37 @@
+.modal{
+    background-color: white;
+    max-width: 45%;
+    min-height: 30vh;
+    border-radius: 5px;
+    position: relative;
+    align-items: center;
+    margin: 70px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.modal-content{
+    margin-left: 20px;
+    padding: 20px 30px;
+    font-size: 15px;
+}
+
+.todo{
+    font-weight: 900;
+    font-style: italic;
+}
+
+.modal-footer{
+    display: flex;
+    flex-direction: row;
+    grid-gap: 5px;
+    gap: 15px;
+    padding-bottom: 15px;
+    align-self: center;
+}
+
+.confirm-button{
+    background: #eba683;
+    border: none;
+}
