@@ -6,6 +6,7 @@ import {TodoItemComponent} from './todo-item/todo-item.component';
 import {FormsModule} from "@angular/forms";
 import {ProgressBarComponent} from './progress-bar/progress-bar.component';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
     imports: [
         BrowserModule,
         FormsModule,
+        HttpClientModule
     ],
   providers: [],
   bootstrap: [AppComponent]

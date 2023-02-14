@@ -1,6 +1,12 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from "rxjs";
 import {delay, map} from "rxjs/operators";
+import {
+  HttpClient,
+  HttpHeaders,
+  HttpParams,
+  HttpRequest,
+} from '@angular/common/http';
 
 export interface Todo {
   id: number;
@@ -18,27 +24,27 @@ let mockData: Todo[] = [
 function removeFromMockData(id: number) {
   mockData = mockData.filter(todo => todo.id !== id);
 }
+const httpOptions = {
+  headers: new HttpHeaders(),
+  params: new HttpParams(),
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoService {
 
-  getAll(): Observable<Todo[]> {
-    return of(undefined).pipe(delay(2_000), map(() => mockData));
+readonly todoListURL="api/todo/list";
+readonly todoURL="api/todo/"
+
+  getAll(query?: string): Observable<Todo[]> {
+    const route = query ? this.todoListURL + `?search=${query}` : this.todoListURL;
+    return this.httpClient.get<any>(route);
   }
 
   remove(id: number): Observable<void> {
-    return new Observable<void>(observer => {
-      setTimeout(() => {
-        if (Math.random() < .8) {
-          removeFromMockData(id);
-          observer.next();
-        } else {
-          observer.error('Failed');
-        }
-        observer.complete();
-      }, 2_000)
-    })
+    return this.httpClient.delete<any>(`${this.todoURL}${id}`);
   }
+
+  constructor(private httpClient: HttpClient){}
 }
